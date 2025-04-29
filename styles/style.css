@@ -1,6 +1,7 @@
 /* Основные стили проекта. Это стили для темы, которую вы верстаете первой. */
 
 .page {
+  background-color: var(--background-color);
   background-image: url(../images/cover-image-dark.png);
   background-attachment: fixed;
   font-family: 'IBM Plex mono', sans-serif;
