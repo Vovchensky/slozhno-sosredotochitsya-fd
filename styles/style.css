@@ -1,5 +1,331 @@
 /* Основные стили проекта. Это стили для темы, которую вы верстаете первой. */
 
 .page {
-  /* сохраните в разметке и стилях класс page у тега body. Он удобен, чтобы составлять селекторы для разных цветовых тем. */
+  background-image: url(../images/cover-image-dark.png);
+  background-attachment: fixed;
+  font-family: 'IBM Plex mono', sans-serif;
+  font-size: 18px;
+  font-weight: 400;
 }
+
+a {
+  text-shadow: 2px 1px 0 var(--accent-color);
+  cursor: pointer;
+}
+
+a:hover {
+  border-bottom: solid 1px var(--paragraph-color);
+}
+
+a:focus {
+  outline: solid 1px var(--paragraph-color);
+}
+
+.header {
+  display: grid;
+  grid-template-rows: 1fr min-content 1fr;
+  position: relative;
+  padding: 10px;
+}
+
+@media (width <= 768px) {
+  .header,
+  .footer {
+    height: 668px;
+  }
+}
+
+@media (width >= 768px) {
+  .header,
+  .footer {
+    height: 1024px;
+    padding-right: 20px;
+    padding-left: 0;
+  }
+}
+
+@media (width >= 1024px) {
+  .header,
+  .footer {
+    height: 768px;
+    padding-top: 18px;
+    padding-right: 20px;
+    padding-left: 0;
+  }
+}
+
+.header__decorated-text {
+  position: absolute;
+  top: 12.5px;
+  right: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--font-color);
+}
+
+.header__decorated-text:after {
+  content: '';
+  display: flex;
+  border-radius: 50%;
+  width: 9px;
+  height: 9px;
+  background-color: var(--font-color);
+  box-shadow: 0px 0px 4px 2px var(--font-color);
+}
+
+.header__decorated-lines-top {
+  right: 10px;
+  top: 10px;
+  position: absolute;
+  display: flex;
+  width: 25px;
+  height: 25px;
+  border-top: solid var(--font-color) 1px;
+  border-right: solid var(--font-color) 1px;
+}
+
+.header__decorated-lines-bottom {
+  left: 10px;
+  bottom: 10px;
+  position: absolute;
+  display: flex;
+  width: 25px;
+  height: 25px;
+  border-bottom: solid var(--font-color) 1px;
+  border-left: solid var(--font-color) 1px;
+}
+
+@media (width >= 768px) {
+  .header__decorated-text {
+    right: 30px;
+    top: 23px;
+  }
+  .header__decorated-lines-top {
+    right: 20px;
+    top: 20px;
+  }
+  .header__decorated-lines-bottom {
+    left: 20px;
+    bottom: 20px;
+  }
+}
+
+.header__theme-menu {
+  justify-self: right;
+  align-self: center;
+}
+
+.header__theme-menu-list {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 11.5px;
+}
+
+@media (width >= 1024px) {
+  .header__theme-menu {
+    justify-self: center;
+    align-self: start;
+  }
+  .header__theme-menu-list {
+    flex-direction: row;
+  }
+}
+
+.header__theme-menu-button {
+  width: 70px;
+  height: 26px;
+  background-color: transparent;
+  border: none;
+  text-transform: lowercase;
+  color: var(--font-color);
+  cursor: pointer;
+}
+
+.header__theme-menu-button_active {
+  border: solid 1px var(--font-color);
+}
+
+.header__theme-menu-button:hover {
+  border: solid 1px rgba(var(--hover-color), 0.4);
+}
+
+.header__theme-menu-button:focus {
+  outline: none;
+  border-bottom: 1px solid var(--accent-color);
+}
+
+.header__title {
+  font-weight: 700;
+  font-size: clamp(7.25rem, 7.0115rem + 1.0178vw, 7.5rem);
+  line-height: 83%;
+  color: var(--h1-color);
+  text-shadow: 4px 4px 0 var(--accent-color);
+  text-align: left;
+}
+
+@media (width >= 768px) {
+  .header__title {
+    font-size: clamp(7.5rem, 0.5625rem + 14.4531vw, 9.8125rem);
+  }
+}
+
+.title-decor {
+  background-color: var(--accent-color);
+  color: var(--title-color);
+  font-weight: 700;
+  line-height: 23.4px;
+  justify-self: right;
+  align-self: center;
+}
+
+@media (width <= 768px) {
+  .title-decor {
+    max-width: 355px;
+  }
+}
+@media (width >= 768px) {
+  .title-decor {
+    max-width: 364px;
+  }
+}
+@media (width >= 1024px) {
+  .title-decor {
+    max-width: 491px;
+  }
+}
+
+main {
+  display: grid;
+  gap: 50px;
+  background-color: #000028;
+  padding: 40px 10px;
+}
+
+@media (width >= 768px) {
+  main {
+    padding: 60px 20px;
+    gap: 80px;
+  }
+}
+
+.section {
+  display: grid;
+  gap: 20px;
+}
+
+@media (width >= 768px) {
+  .one-section {
+    grid-template-columns: 1fr 2fr;
+  }
+  .three-section {
+    grid-template-columns: 1fr 2fr;
+  }
+}
+
+@media (width >= 1024px) {
+  .two-paragraph-container {
+    align-items: start;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+.title-section {
+  font-weight: 700;
+  font-size: 18px;
+  color: var(--font-color);
+}
+
+.paragraph-container {
+  display: grid;
+  gap: 20px;
+}
+
+.paragraph {
+  display: grid;
+  gap: 10px;
+}
+
+.parapraph-title {
+  justify-self: auto;
+  max-width: 100%;
+}
+
+.paragraph-text {
+  color: var(--paragraph-color);
+  line-height: 23.4px;
+}
+
+@media (width >= 768px) {
+  .title-two-section {
+    width: 236px;
+  }
+}
+
+@media (width >= 1024px) {
+  .title-two-section {
+    width: 315px;
+  }
+}
+
+.four-section {
+  gap: 10px;
+}
+
+.gallery {
+  display: grid;
+  gap: 10px;
+}
+
+@media (width >= 768px) {
+  .four-section {
+    gap: 20px;
+  }
+ .gallery {
+  gap: 20px;
+  grid-template-columns: 1fr 1fr 1fr;
+ }
+ .gallery-image-one {
+  grid-column: span 2;
+ }
+ .gallery-image-two {
+  grid-row: span 2;
+ }
+ .gallery-image-three {
+  grid-row: span 2;
+ }
+ .gallery-image-five {
+  grid-column: span 2;
+ }
+}
+
+.gallery-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  background-color: #000028;
+}
+
+.footer-title {
+  color: var(--h1-color);
+  font-weight: 700;
+  font-size: clamp(7.25rem, 7.0115rem + 1.0178vw, 7.5rem);
+}
+
+@media (width >= 768px) {
+  .footer-title {
+    font-size: clamp(7.5rem, 0.5625rem + 14.4531vw, 9.8125rem);
+  }
+}
+
+
+
+
