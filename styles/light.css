@@ -5,16 +5,12 @@
   --font-color: #353430;
   --paragraph-color: #353430;
   --accent-color: #FF8DCB;
+  --background-color: #FFF1F7;
   --hover-color: 53, 52, 48;
 }
 
 .theme-light .page {
   background-image: url(../images/cover-image-light.png);
-}
-
-.theme-light main, 
-.footer {
-  background-color: #FFF1F7;
 }
 
 .theme-light .header__decorated-text {

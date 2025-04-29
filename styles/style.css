@@ -199,7 +199,7 @@ a:focus {
 main {
   display: grid;
   gap: 50px;
-  background-color: #000028;
+  background-color: var(--background-color);
   padding: 40px 10px;
 }
 
@@ -311,7 +311,7 @@ main {
   justify-content: center;
   align-items: center;
   position: relative;
-  background-color: #000028;
+  background-color: var(--background-color);
 }
 
 .footer-title {
