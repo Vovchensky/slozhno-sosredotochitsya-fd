@@ -1,45 +1,53 @@
 /* Основные стили проекта. Это стили для темы, которую вы верстаете первой. */
 
 .page {
+  font-family: 'IBM Plex mono', monospace, sans-serif;
+  font-weight: 400;
+  font-size: 18px;
   background-color: var(--background-color);
   background-image: url(../images/cover-image-dark.png);
   background-attachment: fixed;
-  font-family: 'IBM Plex mono', sans-serif;
-  font-size: 18px;
-  font-weight: 400;
 }
 
-a {
+.paragraph-link {
   text-shadow: 2px 1px 0 var(--accent-color);
-  cursor: pointer;
 }
 
-a:hover {
+.paragraph-link:hover {
   border-bottom: solid 1px var(--paragraph-color);
 }
 
-a:focus {
+.paragraph-link:focus {
+  outline: none;
+}
+
+.paragraph-link:focus-visible {
   outline: solid 1px var(--paragraph-color);
 }
 
 .header {
+  position: relative;
   display: grid;
   grid-template-rows: 1fr min-content 1fr;
-  position: relative;
   padding: 10px;
+}
+
+.header,
+.footer {
+  height: 100vh;
 }
 
 @media (width <= 768px) {
   .header,
   .footer {
-    height: 668px;
+    min-height: 668px;
   }
 }
 
 @media (width >= 768px) {
   .header,
   .footer {
-    height: 1024px;
+    min-height: 1024px;
     padding-right: 20px;
     padding-left: 0;
   }
@@ -48,10 +56,8 @@ a:focus {
 @media (width >= 1024px) {
   .header,
   .footer {
-    height: 768px;
+    min-height: 768px;
     padding-top: 18px;
-    padding-right: 20px;
-    padding-left: 0;
   }
 }
 
@@ -68,17 +74,18 @@ a:focus {
 .header__decorated-text:after {
   content: '';
   display: flex;
-  border-radius: 50%;
   width: 9px;
   height: 9px;
-  background-color: var(--font-color);
+  border-radius: 50%;
   box-shadow: 0px 0px 4px 2px var(--font-color);
+  background-color: var(--font-color);
 }
 
-.header__decorated-lines-top {
-  right: 10px;
-  top: 10px;
+.decorated-zone::before {
+  content: '';
   position: absolute;
+  top: 10px;
+  right: 10px;
   display: flex;
   width: 25px;
   height: 25px;
@@ -86,10 +93,11 @@ a:focus {
   border-right: solid var(--font-color) 1px;
 }
 
-.header__decorated-lines-bottom {
-  left: 10px;
-  bottom: 10px;
+.decorated-zone::after {
+  content: '';
   position: absolute;
+  bottom: 10px;
+  left: 10px;
   display: flex;
   width: 25px;
   height: 25px;
@@ -97,30 +105,30 @@ a:focus {
   border-left: solid var(--font-color) 1px;
 }
 
-@media (width >= 768px) {
-  .header__decorated-text {
-    right: 30px;
-    top: 23px;
-  }
-  .header__decorated-lines-top {
-    right: 20px;
-    top: 20px;
-  }
-  .header__decorated-lines-bottom {
-    left: 20px;
-    bottom: 20px;
-  }
-}
-
 .header__theme-menu {
   justify-self: right;
   align-self: center;
 }
 
+@media (width >= 768px) {
+  .decorated-zone::before {
+    top: 20px;
+    right: 20px;
+  }
+  .decorated-zone::after {
+    bottom: 20px;
+    left: 20px;
+  }
+  .header__decorated-text {
+    top: 22px;
+    right: 28px;
+}
+}
+
 .header__theme-menu-list {
   display: flex;
-  align-items: center;
   flex-direction: column;
+  align-items: center;
   gap: 11.5px;
 }
 
@@ -128,6 +136,7 @@ a:focus {
   .header__theme-menu {
     justify-self: center;
     align-self: start;
+    margin-left: 18.5px;
   }
   .header__theme-menu-list {
     flex-direction: row;
@@ -137,10 +146,10 @@ a:focus {
 .header__theme-menu-button {
   width: 70px;
   height: 26px;
-  background-color: transparent;
   border: none;
-  text-transform: lowercase;
   color: var(--font-color);
+  text-transform: lowercase;
+  background-color: transparent;
   cursor: pointer;
 }
 
@@ -149,21 +158,21 @@ a:focus {
 }
 
 .header__theme-menu-button:hover {
-  border: solid 1px rgba(var(--hover-color), 0.4);
+  border: solid 1px var(--hover-color);
 }
 
 .header__theme-menu-button:focus {
-  outline: none;
   border-bottom: 1px solid var(--accent-color);
+  outline: none;
 }
 
 .header__title {
+  color: var(--h1-color);
   font-weight: 700;
   font-size: clamp(7.25rem, 7.0115rem + 1.0178vw, 7.5rem);
   line-height: 83%;
-  color: var(--h1-color);
-  text-shadow: 4px 4px 0 var(--accent-color);
   text-align: left;
+  text-shadow: 4px 4px 0 var(--accent-color);
 }
 
 @media (width >= 768px) {
@@ -173,12 +182,13 @@ a:focus {
 }
 
 .title-decor {
-  background-color: var(--accent-color);
-  color: var(--title-color);
-  font-weight: 700;
-  line-height: 23.4px;
   justify-self: right;
   align-self: center;
+  color: var(--title-color);
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 23.4px;
+  background-color: var(--accent-color);
 }
 
 @media (width <= 768px) {
@@ -200,14 +210,13 @@ a:focus {
 main {
   display: grid;
   gap: 50px;
-  background-color: var(--background-color);
   padding: 40px 10px;
 }
 
 @media (width >= 768px) {
   main {
-    padding: 60px 20px;
     gap: 80px;
+    padding: 60px 20px;
   }
 }
 
@@ -217,25 +226,23 @@ main {
 }
 
 @media (width >= 768px) {
-  .one-section {
-    grid-template-columns: 1fr 2fr;
-  }
-  .three-section {
+  .why-section,
+  .recommendations-section {
     grid-template-columns: 1fr 2fr;
   }
 }
 
 @media (width >= 1024px) {
-  .two-paragraph-container {
-    align-items: start;
+  .reasons-paragraph-container {
     grid-template-columns: 1fr 1fr 1fr;
+    align-items: start;
   }
 }
 
 .title-section {
+  color: var(--font-color);
   font-weight: 700;
   font-size: 18px;
-  color: var(--font-color);
 }
 
 .paragraph-container {
@@ -255,22 +262,29 @@ main {
 
 .paragraph-text {
   color: var(--paragraph-color);
-  line-height: 23.4px;
+  line-height: 1.3;
+}
+
+.recommendations-section >
+ .paragraph-container >
+  .paragraph >
+   .parapraph-title {
+  font-weight: 400;
 }
 
 @media (width >= 768px) {
-  .title-two-section {
-    width: 236px;
+  .title-reasons-section {
+    max-width: 236px;
   }
 }
 
 @media (width >= 1024px) {
-  .title-two-section {
-    width: 315px;
+  .title-reasons-section {
+    max-width: 315px;
   }
 }
 
-.four-section {
+.gallery-section {
   gap: 10px;
 }
 
@@ -280,23 +294,23 @@ main {
 }
 
 @media (width >= 768px) {
-  .four-section {
+  .gallery-section {
     gap: 20px;
   }
  .gallery {
-  gap: 20px;
   grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px;
  }
- .gallery-image-one {
+ .gallery-image:nth-child(1) {
   grid-column: span 2;
  }
- .gallery-image-two {
+ .gallery-image:nth-child(2) {
   grid-row: span 2;
  }
- .gallery-image-three {
+ .gallery-image:nth-child(3) {
   grid-row: span 2;
  }
- .gallery-image-five {
+ .gallery-image:nth-child(5) {
   grid-column: span 2;
  }
 }
@@ -305,25 +319,34 @@ main {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center;
 }
 
 .footer {
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-  position: relative;
-  background-color: var(--background-color);
 }
 
 .footer-title {
+  margin-top: 8px;
   color: var(--h1-color);
   font-weight: 700;
   font-size: clamp(7.25rem, 7.0115rem + 1.0178vw, 7.5rem);
+  text-shadow: 2px 1px 0 var(--accent-color);
 }
 
 @media (width >= 768px) {
   .footer-title {
+    margin-left: 17px;
     font-size: clamp(7.5rem, 0.5625rem + 14.4531vw, 9.8125rem);
+  }
+}
+
+@media (width >= 1024px) {
+  .footer-title {
+    margin-top: -18px;
   }
 }
 

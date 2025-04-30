@@ -1,18 +1,38 @@
 
-:root.theme-light {
-  --h1-color: #FFC2E6;
-  --title-color: #353430;
-  --font-color: #353430;
-  --paragraph-color: #353430;
-  --accent-color: #FF8DCB;
-  --background-color: #FFF1F7;
-  --hover-color: 53, 52, 48;
-}
+  :root.theme-light {
+    --h1-color: #FFC2E6;
+    --title-color: #353430;
+    --font-color: #353430;
+    --paragraph-color: #353430;
+    --accent-color: #FF8DCB;
+    --background-color: #FFF1F7;
+    --hover-color: rgba(50, 49, 45, 0.4);
+  }
+  
+  .theme-light .page {
+    background-image: url(../images/cover-image-light.png);
+  }
+  
+  .theme-light .header__decorated-text {
+    display: none;
+  }
 
-.theme-light .page {
-  background-image: url(../images/cover-image-light.png);
-}
-
-.theme-light .header__decorated-text {
-  display: none;
-}
+  @media (prefers-color-scheme: light) {
+    :root {
+      --h1-color: #FFC2E6;
+      --title-color: #353430;
+      --font-color: #353430;
+      --paragraph-color: #353430;
+      --accent-color: #FF8DCB;
+      --background-color: #FFF1F7;
+      --hover-color: rgba(50, 49, 45, 0.4);
+    }
+    
+    .page {
+      background-image: url(../images/cover-image-light.png);
+    }
+    
+    .header__decorated-text {
+      display: none;
+    }
+  }
